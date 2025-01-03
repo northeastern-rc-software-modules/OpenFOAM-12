@@ -11,21 +11,21 @@ source env_OpenFOAM-12.sh
 mkdir -p $SOFTWARE_DIRECTORY/src
 
 # Installing $SOFTWARE_NAME/$SOFTWARE_VERSION
-# Intalling UCX
+# Installing UCX
 cd $SOFTWARE_DIRECTORY/src
 wget https://github.com/openucx/ucx/releases/download/v1.16.0/ucx-1.16.0.tar.gz
 tar -xvf ucx-1.16.0.tar.gz
 cd ucx-1.16.0/
-./contrib/configure-release --prefix=$SOFTWARE_DIRECTORY
+./contrib/configure-release --prefix=$SOFTWARE_DIRECTORY --enable-devel-headers
 make
 make install
 
-# Installing OpenMPI
+# Installing OpenMPI/4.1.6
 cd $SOFTWARE_DIRECTORY/src
 wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.6.tar.gz
 tar -xvf openmpi-4.1.6.tar.gz
 cd openmpi-4.1.6
-./configure --prefix=$SOFTWARE_DIRECTORY/ --with-ucx=$SOFTWARE_DIRECTORY --with-ucx-libdir=$SOFTWARE_DIRECTORY/lib --with-pmix
+./configure --prefix=$SOFTWARE_DIRECTORY/ --with-pmix --without-verbs --with-ucx=$SOFTWARE_DIRECTORY --with-ucx-libdir=$SOFTWARE_DIRECTORY/lib
 make -j all
 make install
 
@@ -55,7 +55,7 @@ echo "module-whatis	 \"Loads $SOFTWARE_NAME/$SOFTWARE_VERSION module." >> $SOFTW
 echo "" >> $SOFTWARE_VERSION
 echo "This module was build on $(date)" >> $SOFTWARE_VERSION
 echo "" >> $SOFTWARE_VERSION
-echo "OpenFOAM (https://cmake.org/) is Computational Fluid Dynamics (CFD) program." >> $SOFTWARE_VERSION
+echo "OpenFOAM (https://openfoam.org/) is Computational Fluid Dynamics (CFD) program." >> $SOFTWARE_VERSION
 echo "" >> $SOFTWARE_VERSION
 echo "The script used to build this module can be found here: $GITHUB_URL" >> $SOFTWARE_VERSION
 echo "" >> $SOFTWARE_VERSION

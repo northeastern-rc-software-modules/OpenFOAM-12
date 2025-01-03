@@ -1,18 +1,17 @@
 #%Module
-module-whatis	 "Loads OpenFOAM/12 module.
+module-whatis	 {Loads OpenFOAM/12 module.
 
-This module was build on Tue Aug 20 12:12:37 PM EDT 2024
+This module was build on Thu Jan  2 09:36:58 AM EST 2025
 
-OpenFOAM (https://cmake.org/) is Computational Fluid Dynamics (CFD) program.
+OpenFOAM (https://openfoam.org/) is Computational Fluid Dynamics (CFD) program.
 
-The script used to build this module can be found here: 
+The script used to build this module can be found here: https://github.com/northeastern-rc-software-modules/OpenFOAM-12
 
 To load the module, type:
 module load OpenFOAM/12
 
-Please run: source /shared/EL9/explorer/OpenFOAM/12/OpenFOAM-12/etc/bashrc
-
-"
+Please run: source "/shared/EL9/explorer/OpenFOAM/12/src/OpenFOAM-12/etc/bashrc"
+}
 
 conflict	 OpenFOAM
 prepend-path	 PATH /shared/EL9/explorer/OpenFOAM/12/bin
